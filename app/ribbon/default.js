@@ -1,0 +1,218 @@
+"use strict"; 
+var fontfamily = ["Segoe UI", "Arial", "Times New Roman", "Tahoma", "Helvetica"];
+
+var  fontsize = ["1pt", "2pt", "3pt", "4pt", "5pt"];
+var backstage = {
+        type: ej.Ribbon.ApplicationTabType.Backstage,
+        backstageSettings: {
+            text: "FILE", height: 350, width: 1000, headerWidth: 120, pages: [
+                {id:"info",text:"Info",contentID:"infoCon",itemType:ej.Ribbon.ItemType.Tab},
+				{id:"close",text:"Close",enableSeparator:true,itemType:ej.Ribbon.ItemType.Button},
+				{id:"account",text:"Office Account",contentID:"accountCon"}
+            ]
+        }
+    };
+	function createControl(args) {
+	var languages = [
+                    "ActionScript", "AppleScript", "ASP", "BASIC",
+                    "C", "C++", "Clojure", "COBOL", "ColdFusion",
+                    "Erlang", "Fortran", "Groovy", "Haskell",
+                    "Java", "JavaScript", "Lisp", "Perl", "PHP",
+                    "Python", "Ruby", "Scala", "Scheme"
+            ];
+	    $('#background').ejDropDownList({
+                targetID: "backgroundList",
+                width: "200px",
+	        text:"No Background"
+            });
+	     $('#theme').ejDropDownList({
+                targetID: "themeList",
+                width: "200px",
+	       text:"White"
+            });
+		 $("#background_popup,#theme_popup").addClass("e-backstagechild");
+};
+ReactDOM.render(
+React.createElement("div", null, 
+React.createElement("ul", {id: "pasteSplit"}, 
+   React.createElement("li", null, React.createElement("a", null, "Paste"))
+), 
+React.createElement("ul", {id: "extramenu"}, 
+	React.createElement("li", null, React.createElement("a", null, "New Quick Step"), 
+                    React.createElement("ul", null, 
+                    React.createElement("li", null, React.createElement("a", null, "Move to new folder")), 
+                    React.createElement("li", null, React.createElement("a", null, "Categorize & Move")), 
+                    React.createElement("li", null, React.createElement("a", null, "Flag & Move"))
+			    	)
+			    )
+                ), 
+   React.createElement(EJ.Ribbon, {width: "100%", id: "defaultRibbon", isResponsive: true, applicationTab: backstage, create: createControl}, 
+      React.createElement("tabs", null, 
+        React.createElement("tab", {id: "home", text: "HOME"}, 
+           React.createElement("groups", null, 
+		      React.createElement("group", {text: "New", alignType: "rows"}, 
+			    React.createElement("content", null, 
+				   React.createElement("content", {"defaults-type": "button", "defaults-width": 60, "defaults-height": 60, "defaults-isBig": false}, 
+				      React.createElement("groups", null, 
+					     React.createElement("group", {id: "new", text: "New", toolTip: "New", "buttonSettings-contentType": "imageonly", "buttonSettings-imagePosition": "imagetop", "buttonSettings-prefixIcon": "e-icon e-ribbon e-new", "buttonSettings-click": "executeAction"}
+						 )
+					   )
+					)
+				)
+			  ), 
+			  React.createElement("group", {text: "Clipboard", alignType: "columns"}, 
+                React.createElement("content", null, 
+                    React.createElement("content", {"defaults-type": "splitbutton", "defaults-width": 50, "defaults-height": 70}, 
+                       React.createElement("groups", null, 
+                           React.createElement("group", {id: "paste", text: "Paste", "customTooltip-prefixIcon": "e-pastetip", "splitButtonSettings-contentType": "imageonly", "splitButtonSettings-prefixIcon": "e-icon e-ribbon e-ribbonpaste", "splitButtonSettings-targetID": "pasteSplit", "splitButtonSettings-buttonMode": "dropdown", "splitButtonSettings-arrowPosition": "bottom", "splitButtonSettings-click": "executeAction"}
+                           )
+                        )
+                      ), 
+                      React.createElement("content", {"defaults-type": "button", "defaults-width": 60, "defaults-isBig": false}, 
+                         React.createElement("groups", null, 
+                              React.createElement("group", {id: "cut", text: "Cut", "buttonSettings-contentType": "textandimage", "buttonSettings-prefixIcon": "e-icon e-ribbon e-ribboncut", "buttonSettings-click": "executeAction"}
+                              ), 
+                              React.createElement("group", {id: "copy", text: "Copy", "buttonSettings-contentType": "textandimage", "buttonSettings-prefixIcon": "e-icon e-ribbon e-ribboncopy", "buttonSettings-click": "executeAction"}
+                              ), 
+                              React.createElement("group", {id: "clear", text: "Clear", "buttonSettings-contentType": "textandimage", "buttonSettings-prefixIcon": "e-icon e-ribbon clearAll", "buttonSettings-click": "executeAction"}
+                               )
+                           )
+                         )
+                        )
+                     ), 
+                     React.createElement("group", {text: "Font", alignType: "rows"}, 
+                        React.createElement("content", null, 
+						React.createElement("content", {"defaults-type": "dropdownlist", "defaults-height": 28}, 
+                              React.createElement("groups", null, 
+                                 React.createElement("group", {id: "fontfamily", "dropdownSettings-dataSource": fontfamily, "dropdownSettings-text": "Segoe UI", "dropdownSettings-select": "executeAction", "dropdownSettings-width": 150}
+                                ), 
+                                React.createElement("group", {id: "fontsize", "dropdownSettings-dataSource": fontsize, "dropdownSettings-text": "1pt", "dropdownSettings-select": "executeAction", "dropdownSettings-width": 65}
+                                )
+                              )
+                            ), 
+                          React.createElement("content", {"defaults-isBig": false}, 
+                             React.createElement("groups", null, 
+                                React.createElement("group", {id: "bold", text: "bold", type: "togglebutton", "toggleButtonSettings-contentType": "imageonly", "toggleButtonSettings-defaultText": "Bold", "toggleButtonsettings-activeText": "Bold", "toggleButtonSettings-defaultPrefixIcon": "e-icon e-ribbon e-resbold", "toggleButtonSettings-activePrefixIcon": "e-icon e-ribbon e-resbold", "toggleButtonSettings-click": "executeAction"}), 
+                                React.createElement("group", {id: "italic", type: "togglebutton", "toggleButtonSettings-contentType": "imageonly", "toggleButtonSettings-defaultText": "Italic", "toggleButtonSettings-activeText": "Italic", "toggleButtonSettings-defaultPrefixIcon": "e-icon e-ribbon e-resitalic", "toggleButtonsettings-activePrefixIcon": "e-icon e-ribbon e-resitalic", "toggleButtonSettings-click": "executeAction"}), 
+                                React.createElement("group", {id: "underline", text: "underline", type: "togglebutton", "toggleButtonSettings-contentType": "imageonly", "toggleButtonSettings-defaultText": "Underline", "toggleButtonSettings-activeText": "Underline", "toggleButtonSettings-defaultPrefixIcon": "e-icon e-ribbon e-resunderline", "toggleButtonSettings-activePrefixIcon": "e-icon e-ribbon e-resunderline", "toggleButtonSettings-click": "executeAction"}), 
+                                React.createElement("group", {id: "strikethrough", text: "Strikethrough", type: "togglebutton", "toggleButtonSettings-contentType": "imageonly", "toggleButtonSettings-defaultText": "Strikethrough", "toggleButtonSettings-activeText": "Strikethrough", "toggleButtonSettings-defaultPrefixIcon": "e-icon e-ribbon strikethrough", "toggleButtonSettings-activePrefixIcon": "e-icon e-ribbon strikethrough", "toggleButtonSettings-click": "executeAction"}), 
+                                React.createElement("group", {id: "superscript", text: "Superscript", "buttonSettings-contentType": "imageonly", "buttonSettings-prefixIcon": "e-icon e-ribbon e-superscripticon", "buttonSettings-click": "executeAction"})
+                             )
+                          )
+					    )
+                     ), 
+					 React.createElement("group", {text: "Gallery", alignType: "rows"}, 
+                           React.createElement("content", null, 
+                                                    React.createElement("content", null, 
+                                                        React.createElement("groups", null, 
+                                                            React.createElement("group", {id: "Gallery", columns: 3, itemHeight: 54, itemWidth: 68, expandedColumns: "4", type: "gallery"}, 
+                                                                React.createElement("galleryItems", null, 
+                                                                    React.createElement("galleryItem", {text: "GalleryContent1", "buttonSettings-contentType": "imageonly", "buttonSettings-prefixIcon": "e-icon e-gallerycontent1 e-gbtnimg", "buttonSettings-cssClass": "e-gbtnposition"}), 
+                                                                    React.createElement("galleryItem", {text: "GalleryContent2", "buttonSettings-contentType": "imageonly", "buttonSettings-prefixIcon": "e-icon e-gallerycontent2 e-gbtnimg", "buttonSettings-cssClass": "e-gbtnposition"}), 
+                                                                    React.createElement("galleryItem", {text: "GalleryContent3", "buttonSettings-contentType": "imageonly", "buttonSettings-prefixIcon": "e-icon e-gallerycontent3 e-gbtnimg", "buttonSettings-cssClass": "e-gbtnposition"}), 
+                                                                    React.createElement("galleryItem", {text: "GalleryContent4", "buttonSettings-contentType": "imageonly", "buttonSettings-prefixIcon": "e-icon e-gallerycontent4 e-gbtnimg", "buttonSettings-cssClass": "e-gbtnposition"}), 
+                                                                    React.createElement("galleryItem", {text: "GalleryContent5", "buttonSettings-contentType": "imageonly", "buttonSettings-prefixIcon": "e-icon e-gallerycontent5 e-gbtnimg", "buttonSettings-cssClass": "e-gbtnposition"}), 
+                                                                    React.createElement("galleryItem", {text: "GalleryContent6", "buttonSettings-contentType": "imageonly", "buttonSettings-prefixIcon": "e-icon e-gallerycontent6 e-gbtnimg", "buttonSettings-cssClass": "e-gbtnposition"}), 
+                                                                    React.createElement("galleryItem", {text: "GalleryContent7", "buttonSettings-contentType": "imageonly", "buttonSettings-prefixIcon": "e-icon e-gallerycontent7 e-gbtnimg", "buttonSettings-cssClass": "e-gbtnposition"}), 
+                                                                    React.createElement("galleryItem", {text: "GalleryContent8", "buttonSettings-contentType": "imageonly", "buttonSettings-prefixIcon": "e-icon e-gallerycontent8 e-gbtnimg", "buttonSettings-cssClass": "e-gbtnposition"}), 
+                                                                    React.createElement("galleryItem", {text: "GalleryContent9", "buttonSettings-contentType": "imageonly", "buttonSettings-prefixIcon": "e-icon e-gallerycontent9 e-gbtnimg", "buttonSettings-cssClass": "e-gbtnposition"})
+                                                                ), 
+																  React.createElement("customGalleryItems", null, 
+                                                                    React.createElement("customGalleryItem", {text: "Save Selection as new quick style", toolTip: "Save Selection as new quick style", customItemType: "button", "buttonSettings-cssClass": "e-extrabtnstyle"}), 
+                                                                    React.createElement("customGalleryItem", {customItemType: "menu", menuId: "extramenu", "menuSettings-openOnClick": false}), 
+                                                                    React.createElement("customGalleryItem", {text: "Clear Formatting", toolTip: "Clear Formatting", customItemType: "button", "buttonSettings-cssClass": "e-extrabtnstyle"}), 
+                                                                    React.createElement("customGalleryItem", {text: "Apply Styles", toolTip: "Apply Styles", customItemType: "button", "buttonSettings-cssClass": "e-extrabtnstyle"})
+                                                                )
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            )
+				)
+        ), 
+		     React.createElement("tab", {id: "insert", text: "INSERT"}, 
+                                React.createElement("groups", null, 
+                                    React.createElement("group", {text: "Tables", alignType: "columns"}, 
+                                        React.createElement("content", null, 
+                                            React.createElement("content", {"defaults-type": "button", "defaults-width": 50, "defaults-height": 70}, 
+                                                React.createElement("groups", null, 
+                                                    React.createElement("group", {id: "tables", text: "Tables", "buttonSettings-contentType": "textandimage", "buttonSettings-imagePosition": "imagetop", "buttonSettings-prefixIcon": "e-icon e-ribbon e-table", "buttonSettings-click": "executeAction"})
+                                                )
+                                            )
+                                        )
+                                    ), 
+                                    React.createElement("group", {text: "Illustrations", alignType: "rows"}, 
+                                        React.createElement("content", null, 
+                                            React.createElement("content", {"defaults-type": "button", "defaults-width": 56, "defaults-height": 70}, 
+                                                React.createElement("groups", null, 
+                                                    React.createElement("group", {id: "pictures", text: "Pictures", "buttonSettings-contentType": "textandimage", "buttonSettings-imagePosition": "imagetop", "buttonSettings-prefixIcon": "e-icon e-ribbon e-picture", "buttonSettings-click": "executeAction"}), 
+                                                    React.createElement("group", {id: "videos", text: "Videos", "buttonSettings-contentType": "textandimage", "buttonSettings-imagePosition": "imagetop", "buttonSettings-prefixIcon": "e-icon e-ribbon e-video", "buttonSettings-click": "executeAction"}), 
+                                                    React.createElement("group", {id: "shapes", text: "Shapes", "buttonSettings-contentType": "textandimage", "buttonSettings-imagePosition": "imagetop", "buttonSettings-prefixIcon": "e-icon e-ribbon e-shape", "buttonSettings-click": "executeAction"}), 
+                                                    React.createElement("group", {id: "charts", text: "Charts", "buttonSettings-contentType": "textandimage", "buttonSettings-imagePosition": "imagetop", "buttonSettings-prefixIcon": "e-icon e-ribbon e-chart", "buttonSettings-click": "executeAction"})
+                                                )
+                                            )
+                                        )
+                                    ), 
+                                    React.createElement("group", {text: "Comments", alignType: "rows"}, 
+                                        React.createElement("content", null, 
+                                            React.createElement("content", {"defaults-type": "button", "defaults-width": 70, "defaults-height": 70}, 
+                                                React.createElement("groups", null, 
+                                                    React.createElement("group", {id: "comments", text: "Comments", "buttonSettings-contentType": "textandimage", "buttonSettings-imagePosition": "imagetop", "buttonSettings-prefixIcon": "e-icon e-ribbon e-comment", "buttonSettings-click": "executeAction"})
+                                                )
+                                            )
+                                        )
+                                    ), 
+                                    React.createElement("group", {text: "Text", alignType: "rows"}, 
+                                        React.createElement("content", null, 
+                                            React.createElement("content", {"defaults-type": "button", "defaults-width": 70, "defaults-height": 70}, 
+                                                React.createElement("groups", null, 
+                                                    React.createElement("group", {id: "text", text: "Text", "buttonSettings-contentType": "textandimage", "buttonSettings-imagePosition": "imagetop", "buttonSettings-prefixIcon": "e-icon e-ribbon e-text", "buttonSettings-width": "50", "buttonSettings-click": "executeAction"}), 
+                                                    React.createElement("group", {id: "datetime", text: "Date Time", "buttonSettings-contentType": "textandimage", "buttonSettings-imagePosition": "imagetop", "buttonSettings-prefixIcon": "e-icon e-ribbon e-datetimenew", "buttonSettings-click": "executeAction"})
+                                                )
+                                            )
+                                        )
+                                    ), 
+                                    React.createElement("group", {text: "Hyperlink", alignType: "rows"}, 
+                                        React.createElement("content", null, 
+                                            React.createElement("content", {"defaults-type": "button", "defaults-width": 70, "defaults-height": 70}, 
+                                                React.createElement("groups", null, 
+                                                    React.createElement("group", {id: "hyperlink", text: "Hyperlink", "buttonSettings-contentType": "textandimage", "buttonSettings-imagePosition": "imagetop", "buttonSettings-prefixIcon": "e-icon e-ribbon e-hyperlink", "buttonSettings-click": "executeAction"})
+                                                )
+                                            )
+                                        )
+                                    ), 
+                                    React.createElement("group", {text: "Equation", alignType: "rows"}, 
+                                        React.createElement("content", null, 
+                                            React.createElement("content", {"defaults-type": "button", "defaults-width": 60, "defaults-height": 70}, 
+                                                React.createElement("groups", null, 
+                                                    React.createElement("group", {id: "equation", text: "Equation", "buttonSettings-contentType": "textandimage", "buttonSettings-imagePosition": "imagetop", "buttonSettings-prefixIcon": "e-icon e-ribbon e-equation", "buttonSettings-click": "executeAction"})
+                                                )
+                                            )
+                                        )
+                                    ), 
+                                    React.createElement("group", {text: "Print Layout", aligntype: "rows"}, 
+                                        React.createElement("content", null, 
+                                            React.createElement("content", {"defaults-type": "button", "defaults-width": 80, "defaults-height": 70}, 
+                                                React.createElement("groups", null, 
+                                                    React.createElement("group", {id: "printlayout", text: "Print Layout", "buttonSettings-contentType": "textandimage", "buttonSettings-imagePosition": "imagetop", "buttonSettings-prefixIcon": "e-icon e-ribbon e-printlayout", "buttonSettings-click": "executeAction"})
+                                                )
+                                            )
+                                        )
+                                   ), 
+                                    React.createElement("group", {text: "Save", alignType: "rows"}, 
+                                        React.createElement("content", null, 
+                                            React.createElement("content", {"defaults-type": "button", "defaults-width": 50, "defaults-height": 70}, 
+                                                React.createElement("groups", null, 
+                                                    React.createElement("group", {id: "print", text: "Print", "buttonSettings-contentType": "textandimage", "buttonSettings-imagePosition": "imagetop", "buttonSettings-prefixIcon": "e-icon e-ribbon e-print", "buttonSettings-click": "executeAction"}), 
+                                                    React.createElement("group", {id: "save", text: "Save", "buttonSettings-contentType": "textandimage", "buttonSettings-imagePosition": "imagetop", "buttonSettings-prefixIcon": "e-icon e-ribbon e-save", "buttonSettings-click": "executeAction"})
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+      )
+   )
+   ),
+  document.getElementById('ribbon-default')
+);
