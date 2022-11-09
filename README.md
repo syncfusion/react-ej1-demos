@@ -91,4 +91,4 @@ Take a look at the Syncfusion Essential JS 1 for React JS live examples.
 
 * To renew the subscription, click [here](https://www.syncfusion.com/sales/products?utm_source=github&utm_medium=listing) or contact our sales team at <salessupport@syncfusion.com>.
 
-<p>Copyright © 2001-2022 Syncfusion, Inc. Updated on 2022-09-29 at precisely 19:27:04 EST.</p>
+<p>Copyright © 2001-2022 Syncfusion, Inc. Updated on 2022-11-09 at precisely 14:35:51 EST.</p>
